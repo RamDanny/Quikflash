@@ -39,13 +39,14 @@
     <Button
         android:id="@+id/addButton"
         android:layout_below="@id/appScreen"
+        android:layout_alignRight="@id/appScreen"
+        android:layout_marginRight="10dp"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:gravity="center"
+        android:textAlignment="center"
         android:textColor="#ffffff"
         android:text="+"
         android:textStyle="bold"
-        android:textSize="25dp"
-        android:layout_alignRight="@id/appScreen"/>
+        android:textSize="25dp"/>
 
 </RelativeLayout>
