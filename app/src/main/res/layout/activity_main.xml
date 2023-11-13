@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background.jpg"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <TextView
@@ -35,14 +35,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
 
-<!--        Row-->
+<!--        Row         -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
-
+        <!--  Item 1 -->
             <LinearLayout
                 android:clickable="true"
                 android:background="?android:attr/selectableItemBackground"
@@ -93,6 +93,62 @@
         </LinearLayout>
 
         <!-- Row 2 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!--  Item 3 -->
+            <LinearLayout
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_margin="8dp"
+                android:onClick="onStudyClick">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/minus" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="@string/cap3"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/plus" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cap2"
+                    android:gravity="center"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </LinearLayout>
 
 
     </LinearLayout>
