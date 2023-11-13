@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Quikflash</string>
+    <string name="menu">Menu</string>
+    <string name="caption_1">Caption 1</string>
+    <string name="caption_2">Caption 2</string>
+    <string name="cap1">Study Deck</string>
+    <string name="cap2">Add Deck</string>
 </resources>
