@@ -52,7 +52,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_margin="8dp"
-                android:onClick="onStudyClick">
+               >
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -75,7 +75,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="onAddClick"
+                >
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -139,12 +143,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/plus" />
+                    android:src="@drawable/gears" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/cap2"
+                    android:text="Modify Deck"
                     android:gravity="center"
                     android:textColor="@android:color/black" />
             </LinearLayout>
