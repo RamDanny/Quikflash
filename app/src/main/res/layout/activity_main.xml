@@ -33,7 +33,7 @@
             android:gravity="center"
             android:fontFamily="@font/chakra_petch_light"
             android:textSize="20dp"
-            android:text="Hello world"/>
+            android:text="Decks"/>
 
     </ScrollView>
     <Button
