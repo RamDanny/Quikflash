@@ -15,6 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE deck(deck_id INT PRIMARY KEY, deck_name TEXT UNIQUE)");
+
         db.execSQL("CREATE TABLE cards(card_id INT PRIMARY KEY,card_question TEXT, card_answer, category TEXT, card_deck_id INT, FOREIGN KEY (card_deck_id) REFERENCES deck(deck_id))");
     }
 
@@ -49,4 +50,31 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             System.out.println("Deleted");
     }
+
+    public Boolean add_card(String question, String answer, String category, int deck_id)
+    {
+
+        SQLiteDatabase db= this.getWritableDatabase();
+        ContentValues contentValue = new ContentValues();
+
+        contentValue.put("card_question",question);
+        contentValue.put("card_answer",answer);
+        contentValue.put("category",category);
+        contentValue.put("card_deck_id",deck_id);
+
+        long result = db.insert("cards",
+                null,contentValue);
+        if(result == -1)
+            return false;
+        return true;
+    }
+
+    public Cursor get_card(Integer deck_id){
+
+       String deck_id1= deck_id.toString();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor record = db.rawQuery("SELECT * FROM cards where card_deck_id =?",new String[] {deck_id1 },null);
+        return record;
+    }
+
 }

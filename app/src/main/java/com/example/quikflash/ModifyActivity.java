@@ -40,7 +40,9 @@ public class ModifyActivity extends AppCompatActivity {
             addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // GO TO ADD CARDS PAGE
+                    Intent i = new Intent(ModifyActivity.this,AddCards.class);
+                    i.putExtra("id",id);
+                    startActivity(i);
                 }
             });
 
