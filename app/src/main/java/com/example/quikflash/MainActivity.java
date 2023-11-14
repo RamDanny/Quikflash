@@ -12,12 +12,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
 
 
     public void onStudyClick(View view) {
         Intent intent = new Intent(this, StudyActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void onAddClick(View view) {
+        Intent intent = new Intent(this, InsertActivity.class);
         startActivity(intent);
 
     }
