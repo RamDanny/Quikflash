@@ -10,16 +10,14 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class StudyActivity extends AppCompatActivity {
+public class ModifyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_study);
-
+        setContentView(R.layout.activity_modify);
         DBHelper db = new DBHelper(this);
         Cursor decks = db.get_decks();
 
@@ -36,22 +34,35 @@ public class StudyActivity extends AppCompatActivity {
             textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
             textView.setTextSize(32);
 
-
-            //Delete Button
-            Button button = new Button(this);
-            button.setText("Study");
-            button.setOnClickListener(new View.OnClickListener() {
+            // Add cards
+            Button addBtn = new Button(this);
+            addBtn.setText("Add Cards");
+            addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   // GO TO STUDY PAGE
+                    // GO TO ADD CARDS PAGE
+                }
+            });
+
+            //Delete Button
+            Button deleteBtn = new Button(this);
+            deleteBtn.setText("Delete");
+            deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DBHelper db = new DBHelper(getApplicationContext());
+                    db.delete_deck(id.toString());
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), ModifyActivity.class));
                 }
             });
 
             linearLayout.addView(textView);
-            linearLayout.addView(button);
+            linearLayout.addView(deleteBtn);
+            linearLayout.addView(addBtn);
             linearLayout.setGravity(Gravity.CENTER);
 
-            LinearLayout view = findViewById(R.id.scrollView_layout);
+            LinearLayout view = findViewById(R.id.scrollView2);
             view.addView(linearLayout);
 
             count++;

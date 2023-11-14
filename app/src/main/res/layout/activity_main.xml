@@ -133,6 +133,7 @@
 
 
             <LinearLayout
+                android:id="@+id/modifyDeck"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -143,12 +144,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/plus" />
+                    android:src="@drawable/gears" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/cap2"
+                    android:text="Modify Deck"
                     android:gravity="center"
                     android:textColor="@android:color/black" />
             </LinearLayout>
