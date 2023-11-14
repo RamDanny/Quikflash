@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,10 +41,19 @@ public class AddCards extends AppCompatActivity {
             TextView textView = new TextView(this);
             textView.setText(question);
             TextView textView1 = new TextView(this);
-            textView.setText(answer);
+            textView.setGravity(Gravity.CENTER);
+            textView1.setText(answer);
+            textView1.setGravity(Gravity.CENTER);
             textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
             textView.setTextSize(32);
+            textView1.setTypeface(textView1.getTypeface(), Typeface.BOLD);
+            textView1.setTextSize(32);
 
+            linearLayout.addView(textView);
+            linearLayout.addView(textView1);
+            linearLayout.setGravity(Gravity.CENTER);
+            LinearLayout view = findViewById(R.id.listcards);
+            view.addView(linearLayout);
 
         }
 

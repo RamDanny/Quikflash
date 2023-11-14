@@ -15,8 +15,19 @@
         android:text="Add Cards"
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/listcards" />
 
+    <LinearLayout
+        android:id="@+id/listcards"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/ques"
+        >
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/ques"
@@ -27,8 +38,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="Question"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+         />
 
     <EditText
         android:id="@+id/ans"
