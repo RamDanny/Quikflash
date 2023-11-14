@@ -27,7 +27,7 @@
    <TableLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:minHeight="80"
+       android:minHeight="80sp"
        >
        <TableRow>
            <TextView
@@ -47,47 +47,51 @@
 
    </TableLayout>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="70dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
 
-    <Button
-           android:id="@+id/insert"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginStart="222dp"
-           android:layout_marginTop="15dp"
-           android:layout_marginEnd="83dp"
-           android:layout_marginBottom="39dp"
-           android:backgroundTint="#8588ff"
-           android:text="Add"
-           android:textColor="#000000"
-           android:textSize="16sp"
-           android:textStyle="bold"
-           android:fontFamily="serif"
-           android:typeface="monospace"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="1.0"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintVertical_bias="0.22" />
+        <Button
+            android:id="@+id/insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="222dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="39dp"
+            android:backgroundTint="#8588ff"
+            android:fontFamily="serif"
+            android:text="Add"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/backbtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.22" />
 
-    <Button
-        android:id="@+id/backbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#8588ff"
-        android:fontFamily="serif"
-        android:text="Back"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="13dp" />
+        <Button
+            android:id="@+id/backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:backgroundTint="#8588ff"
+            android:fontFamily="serif"
+            android:text="Back"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/insert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>>
+</LinearLayout>

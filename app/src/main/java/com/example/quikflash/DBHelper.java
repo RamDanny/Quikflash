@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         int c = db.delete("deck","deck_id=?",new String[]{id});
         if(c == -1)
-                System.out.println("Error");
+            System.out.println("Error");
         else
             System.out.println("Deleted");
     }

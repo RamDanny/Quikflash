@@ -18,7 +18,6 @@ public class InsertActivity extends AppCompatActivity {
 
         if(check_insert == true)
         {
-            System.out.println("Inserted");
             Intent j = new Intent(InsertActivity.this, MainActivity.class);
             startActivity(j);
         }
