@@ -13,11 +13,16 @@
         android:theme="@style/Theme.Quikflash"
         tools:targetApi="31">
         <activity
+            android:name=".ViewCards"
+            android:exported="false" />
+        <activity
             android:name=".AddCards"
             android:exported="false" />
-        <activity android:name=".InsertActivity"
-                    android:exported="false" />
-        <activity android:name=".ModifyActivity"
+        <activity
+            android:name=".InsertActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModifyActivity"
             android:exported="false" />
         <activity
             android:name=".StudyActivity"

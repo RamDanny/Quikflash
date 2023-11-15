@@ -4,78 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".AddCards">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="102dp"
         android:layout_marginTop="49dp"
         android:text="Add Cards"
+        android:textColor="#000000"
         android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/listcards" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/listcards"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textView3"
-        app:layout_constraintBottom_toTopOf="@+id/ques"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent">
-
-    </LinearLayout>
 
     <EditText
         android:id="@+id/ques"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
+        android:hint="Question"
         android:inputType="text"
-        android:text="Question"
-        app:layout_constraintTop_toBottomOf="@id/listcards"
-        app:layout_constraintBottom_toTopOf="@+id/ans"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/ans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="38dp"
         android:ems="10"
+        android:hint="Answer"
         android:inputType="text"
-        android:text="Answer"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/ques"
         app:layout_constraintTop_toBottomOf="@+id/ques" />
 
     <EditText
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="49dp"
         android:ems="10"
+        android:hint="Category"
         android:inputType="text"
-        android:text="Category"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/ans"
         app:layout_constraintTop_toBottomOf="@+id/ans" />
 
     <Button
-
         android:id="@+id/addbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="456dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="2dp"
         android:text="Add Card"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/backToModifyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addbtn">
+
+        <LinearLayout
+            android:id="@+id/listcards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Present Cards"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

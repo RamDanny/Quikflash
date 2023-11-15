@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -38,19 +39,33 @@ public class AddCards extends AppCompatActivity {
             LinearLayout linearLayout = new LinearLayout(this);
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-            TextView textView = new TextView(this);
-            textView.setText(question);
-            TextView textView1 = new TextView(this);
-            textView.setGravity(Gravity.CENTER);
-            textView1.setText(answer);
-            textView1.setGravity(Gravity.CENTER);
-            textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
-            textView.setTextSize(32);
-            textView1.setTypeface(textView1.getTypeface(), Typeface.BOLD);
-            textView1.setTextSize(32);
+            // Question
+            TextView questionView = new TextView(this);
+            questionView.setText(question);
+            questionView.setGravity(Gravity.CENTER);
+            questionView.setTextColor(Color.BLACK);
+            questionView.setTypeface(questionView.getTypeface(), Typeface.BOLD);
+            questionView.setTextSize(14);
 
-            linearLayout.addView(textView);
-            linearLayout.addView(textView1);
+            // Seperator
+            TextView seperatorView = new TextView(this);
+            seperatorView.setText(" - ");
+            seperatorView.setGravity(Gravity.CENTER);
+            seperatorView.setTextColor(Color.BLACK);
+            seperatorView.setTypeface(seperatorView.getTypeface(), Typeface.BOLD);
+            seperatorView.setTextSize(14);
+
+            // Answer
+            TextView answerView = new TextView(this);
+            answerView.setText(answer);
+            answerView.setGravity(Gravity.CENTER);
+            answerView.setTextColor(Color.BLACK);
+            answerView.setTypeface(answerView.getTypeface(), Typeface.BOLD);
+            answerView.setTextSize(14);
+
+            linearLayout.addView(questionView);
+            linearLayout.addView(seperatorView);
+            linearLayout.addView(answerView);
             linearLayout.setGravity(Gravity.CENTER);
             LinearLayout view = findViewById(R.id.listcards);
             view.addView(linearLayout);
@@ -72,14 +87,18 @@ public class AddCards extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Added card!",Toast.LENGTH_SHORT).show();
                 }
 
-                startActivity(new Intent(getApplicationContext(), AddCards.class));
+                startActivity(new Intent(getApplicationContext(), ViewCards.class));
             }
         });
 
-
-
-
-
+        Button back = findViewById(R.id.backToModifyBtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AddCards.this, ModifyActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 }
