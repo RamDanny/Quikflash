@@ -29,8 +29,7 @@ public class AddCards extends AppCompatActivity {
         DBHelper db = new DBHelper(this);
         Cursor cards = db.get_card(deck_id);
 
-        while(cards.moveToNext())
-        {
+        while(cards.moveToNext()) {
 
             String question = cards.getString(1);
             String answer = cards.getString(2);
@@ -55,27 +54,28 @@ public class AddCards extends AppCompatActivity {
             LinearLayout view = findViewById(R.id.listcards);
             view.addView(linearLayout);
 
-        }
 
-        EditText ques = findViewById(R.id.ques);
-        EditText ans = findViewById(R.id.ans);
-        EditText category = findViewById(R.id.category);
+            EditText ques = findViewById(R.id.ques);
+            EditText ans = findViewById(R.id.ans);
+            EditText category = findViewById(R.id.category);
 
-        Button add = findViewById(R.id.addbtn);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DBHelper db = new DBHelper(getApplicationContext());
-              Boolean check_add=  db.add_card( ques.getText().toString(), ans.getText().toString(), category.getText().toString(),deck_id );
-                if(check_add == true)
-                {
-                    Toast.makeText(getApplicationContext(),"Added card!",Toast.LENGTH_SHORT).show();
+            Button add = findViewById(R.id.addbtn);
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DBHelper db = new DBHelper(getApplicationContext());
+                    Boolean check_add = db.add_card(ques.getText().toString(), ans.getText().toString(), category.getText().toString(), deck_id);
+                    if (check_add == true) {
+                        Toast.makeText(getApplicationContext(), "Added card!", Toast.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(getApplicationContext(), AddCards.class));
+                    }
+
                 }
 
-                startActivity(new Intent(getApplicationContext(), AddCards.class));
-            }
-        });
+            });
 
+        }
 
 
 
