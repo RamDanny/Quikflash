@@ -71,7 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor get_card(Integer deck_id){
 
-       String deck_id1= deck_id.toString();
+        String deck_id1= deck_id.toString();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor record = db.rawQuery("SELECT * FROM cards where card_deck_id =?",new String[] {deck_id1 },null);
         return record;

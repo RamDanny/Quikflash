@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -28,10 +29,14 @@ public class ModifyActivity extends AppCompatActivity {
 
             LinearLayout linearLayout = new LinearLayout(this);
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.weight = 1;
 
             TextView textView = new TextView(this);
             textView.setText(name);
             textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+            textView.setTextColor(Color.BLACK);
+            textView.setMinWidth(500);
             textView.setTextSize(32);
 
             // Add cards
@@ -59,9 +64,9 @@ public class ModifyActivity extends AppCompatActivity {
                 }
             });
 
-            linearLayout.addView(textView);
-            linearLayout.addView(deleteBtn);
-            linearLayout.addView(addBtn);
+            linearLayout.addView(textView,lp);
+            linearLayout.addView(deleteBtn,lp);
+            linearLayout.addView(addBtn,lp);
             linearLayout.setGravity(Gravity.CENTER);
 
             LinearLayout view = findViewById(R.id.scrollView2);

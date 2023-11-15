@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -27,6 +28,7 @@ public class StudyActivity extends AppCompatActivity {
         while(decks.moveToNext()){
             Integer id = decks.getInt(0);
             String name = decks.getString(1);
+            name  =  name + " - ";
 
             LinearLayout linearLayout = new LinearLayout(this);
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -34,16 +36,19 @@ public class StudyActivity extends AppCompatActivity {
             TextView textView = new TextView(this);
             textView.setText(name);
             textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
-            textView.setTextSize(32);
+            textView.setTextColor(Color.BLACK);
+            textView.setTextSize(28);
 
 
-            //Delete Button
+            //Study Button
             Button button = new Button(this);
             button.setText("Study");
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   // GO TO STUDY PAGE
+                   Intent i = new Intent(StudyActivity.this, ViewCards.class);
+                   i.putExtra("id",id);
+                   startActivity(i);
                 }
             });
 
@@ -55,6 +60,17 @@ public class StudyActivity extends AppCompatActivity {
             view.addView(linearLayout);
 
             count++;
+        }
+
+        if(count == 0){
+            TextView textView = new TextView(this);
+            textView.setText("Add Decks");
+            textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+            textView.setTextColor(Color.BLACK);
+            textView.setTextSize(28);
+
+            LinearLayout view = findViewById(R.id.scrollView_layout);
+            view.addView(textView);
         }
     }
 }

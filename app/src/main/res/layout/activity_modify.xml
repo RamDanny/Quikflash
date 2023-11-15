@@ -12,13 +12,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Modify Decks"
+        android:layout_marginBottom="50sp"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-
         android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
