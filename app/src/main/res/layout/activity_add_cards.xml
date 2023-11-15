@@ -21,11 +21,12 @@
     <LinearLayout
         android:id="@+id/listcards"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/textView3"
         app:layout_constraintBottom_toTopOf="@+id/ques"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent">
 
     </LinearLayout>
 
@@ -38,7 +39,9 @@
         android:ems="10"
         android:inputType="text"
         android:text="Question"
-         />
+        app:layout_constraintTop_toBottomOf="@id/listcards"
+        app:layout_constraintBottom_toTopOf="@+id/ans"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/ans"

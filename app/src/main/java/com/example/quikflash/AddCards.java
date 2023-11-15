@@ -66,7 +66,7 @@ public class AddCards extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DBHelper db = new DBHelper(getApplicationContext());
-              Boolean check_add=  db.add_card( ques.getText().toString(), ans.getText().toString(), category.getText().toString(),deck_id );
+                Boolean check_add=  db.add_card( ques.getText().toString(), ans.getText().toString(), category.getText().toString(),deck_id );
                 if(check_add == true)
                 {
                     Toast.makeText(getApplicationContext(),"Added card!",Toast.LENGTH_SHORT).show();
