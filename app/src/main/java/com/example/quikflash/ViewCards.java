@@ -15,14 +15,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 public class ViewCards extends AppCompatActivity {
 
-    Button nextCardBtn;
+    Button correctBtn;
+    Button wrongBtn;
     Button backBtn;
+    int correct = 0;
+    int wrong = 0;
 
     int cardID;
     int count;
@@ -59,6 +63,26 @@ public class ViewCards extends AppCompatActivity {
         linearLayout.setId(LinearLayout.generateViewId());
         return linearLayout.getId();
     }
+
+    public void nextCard(HashMap<Integer,Boolean> finished, ArrayList<String> questions, ArrayList<String> answers){
+
+        // Remove old Question and answer
+        ConstraintLayout layout = findViewById(R.id.studyCardsView);
+        layout.removeView(findViewById(cardID));
+
+        // Get new quesion and answer and add to the screen
+        Random rand = new Random();
+        Integer rand_int = rand.nextInt(questions.size());
+
+        while(finished.getOrDefault(rand_int,false) == true){
+            rand_int = rand.nextInt(questions.size());
+        }
+
+        count -= 1;
+        finished.put(rand_int,true);
+        cardID = makeCard(questions.get(rand_int),answers.get(rand_int));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         cardID = -1;
@@ -83,37 +107,42 @@ public class ViewCards extends AppCompatActivity {
         count = questions.size()-1;
         HashMap<Integer, Boolean> finished = new HashMap<Integer, Boolean>();
 
-        nextCardBtn = findViewById(R.id.nextCardBtn);
+        correctBtn = findViewById(R.id.correctBtn);
+        wrongBtn = findViewById(R.id.wrongBtn);
         backBtn = findViewById(R.id.backBtn);
 
-        nextCardBtn.setOnClickListener(new View.OnClickListener() {
+
+        correctBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                correct += 1;
                 // Once all the cards are over, it returns to the main menu
                 if(count == -1){
-                    System.out.println("Finished");
-                    Toast.makeText(getApplicationContext(),"Finished cards",Toast.LENGTH_SHORT).show();
-                    Intent i  = new Intent(ViewCards.this,MainActivity.class);
+                    Intent i = new Intent(ViewCards.this, FinishedActivity.class);
+                    i.putExtra("correct",correct);
+                    i.putExtra("wrong",wrong);
                     startActivity(i);
                     return;
                 }
 
-                // Remove old Question and answer
-                ConstraintLayout layout = findViewById(R.id.studyCardsView);
-                layout.removeView(findViewById(cardID));
+                nextCard(finished,questions,answers);
+            }
+        });
 
-                // Get new quesion and answer and add to the screen
-                Random rand = new Random();
-                Integer rand_int = rand.nextInt(questions.size());
-
-                while(finished.getOrDefault(rand_int,false) == true){
-                    rand_int = rand.nextInt(questions.size());
+        wrongBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wrong +=1;
+                // Once all the cards are over, it returns to the main menu
+                if(count == -1){
+                    Intent i = new Intent(ViewCards.this, FinishedActivity.class);
+                    i.putExtra("correct",correct);
+                    i.putExtra("wrong",wrong);
+                    startActivity(i);
+                    return;
                 }
 
-                count -= 1;
-                finished.put(rand_int,true);
-                cardID = makeCard(questions.get(rand_int),answers.get(rand_int));
+                nextCard(finished,questions,answers);
             }
         });
 

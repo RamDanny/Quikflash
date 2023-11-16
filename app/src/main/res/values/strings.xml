@@ -49,6 +49,5 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="cap3">Delete</string>
-    <string name="channel_name">Reminder</string>
-    <string name="channel_description">desc</string>
+    <string name="title_activity_delete_deck">DeleteDeck</string>
 </resources>
