@@ -1,6 +1,7 @@
 package com.example.quikflash;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +10,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -28,21 +30,32 @@ public class StudyActivity extends AppCompatActivity {
         while(decks.moveToNext()){
             Integer id = decks.getInt(0);
             String name = decks.getString(1);
-            name  =  name + " - ";
+            //name  =  name + " - ";
 
             LinearLayout linearLayout = new LinearLayout(this);
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            Button button = new Button(this);
+            ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(20, 20, 20, 20);
+            button.setLayoutParams(params);
+            button.setText(name);
+            button.setTextSize(28);
+            button.setTextColor(Color.BLACK);
+            button.setBackgroundColor(ContextCompat.getColor(this, com.google.android.material.R.color.cardview_light_background));
+            //setContentView(button, params);
 
-            TextView textView = new TextView(this);
+            /*TextView textView = new TextView(this);
             textView.setText(name);
             textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
             textView.setTextColor(Color.BLACK);
             textView.setTextSize(28);
 
 
+
+
             //Study Button
             Button button = new Button(this);
-            button.setText("Study");
+            button.setText("Study");*/
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -52,7 +65,7 @@ public class StudyActivity extends AppCompatActivity {
                 }
             });
 
-            linearLayout.addView(textView);
+            //linearLayout.addView(textView);
             linearLayout.addView(button);
             linearLayout.setGravity(Gravity.CENTER);
 
