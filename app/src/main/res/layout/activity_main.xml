@@ -129,6 +129,12 @@
             </LinearLayout>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/reminderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enable Reminder"
+            android:layout_centerInParent="true" />
 
     </LinearLayout>
 
