@@ -32,6 +32,7 @@ public class NotifyActivity extends AppCompatActivity {
     ToggleButton toggleBtn;
     Button home;
     Timer timer;
+    PendingIntent pendingIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +68,9 @@ public class NotifyActivity extends AppCompatActivity {
             alarmTime.set(Calendar.MINUTE, timePicker.getMinute());
             alarmTime.set(Calendar.SECOND, 0);
 
-
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
             timer.scheduleAtFixedRate(new AlarmTask(), calculateDelay(alarmTime.getTime()), 24 * 60 * 60 * 1000);
             Toast.makeText(NotifyActivity.this,"Notification Set",Toast.LENGTH_SHORT).show();
@@ -101,20 +104,14 @@ public class NotifyActivity extends AppCompatActivity {
             manager.createNotificationChannel(channel);
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(NotifyActivity.this, "Notify");
-            builder.setContentTitle("Studyyy!!");
-            builder.setContentText("pls dont ignore!");
+            builder.setContentTitle("Time to Study!");
+            builder.setContentText("Have you done your daily studying??");
             builder.setSmallIcon(R.drawable.ic_notification);
             builder.setAutoCancel(true);
+            builder.setContentIntent(pendingIntent);
 
             NotificationManagerCompat managerCompat = NotificationManagerCompat.from(NotifyActivity.this);
             if (ActivityCompat.checkSelfPermission(NotifyActivity.this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
                 return;
             }
             managerCompat.notify(1, builder.build());
