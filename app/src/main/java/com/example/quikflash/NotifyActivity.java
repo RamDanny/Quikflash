@@ -28,10 +28,10 @@ import java.util.TimerTask;
 public class NotifyActivity extends AppCompatActivity {
 
     AlarmManager alarmManager;
-    PendingIntent pendingIntent;
     TimePicker timePicker;
     ToggleButton toggleBtn;
     Button home;
+    Timer timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,7 @@ public class NotifyActivity extends AppCompatActivity {
         timePicker = findViewById(R.id.timePicker);
         home = findViewById(R.id.notificationReturnHome);
         toggleBtn = findViewById(R.id.toggleNotification);
+        timer = new Timer();
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,42 +61,20 @@ public class NotifyActivity extends AppCompatActivity {
     }
 
     public void setNotification(boolean isChecked) {
-        long time;
         if (isChecked == true) {
-            /*Calendar calendar = Calendar.getInstance();
+            Calendar alarmTime = Calendar.getInstance();
+            alarmTime.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
+            alarmTime.set(Calendar.MINUTE, timePicker.getMinute());
+            alarmTime.set(Calendar.SECOND, 0);
 
-            calendar.set(Calendar.HOUR_OF_DAY, timePicker.getCurrentHour());
-            calendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
 
-            Intent intent = new Intent(this, Notifier.class);
-            pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_MUTABLE);
 
-            time = (calendar.getTimeInMillis() - (calendar.getTimeInMillis() % 60000));
-            if (System.currentTimeMillis() > time) {
-                if (Calendar.AM_PM == 0)
-                    time = time + (1000 * 60 * 60 * 12);
-                else
-                    time = time + (1000 * 60 * 60 * 24);
-            }
-
-            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (time * 1000), pendingIntent);
+            timer.scheduleAtFixedRate(new AlarmTask(), calculateDelay(alarmTime.getTime()), 24 * 60 * 60 * 1000);
             Toast.makeText(NotifyActivity.this,"Notification Set",Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(NotifyActivity.this,"Notification Cancelled",Toast.LENGTH_SHORT).show();
-            alarmManager.cancel(pendingIntent);
-        }*/
-            Calendar alarmTime = Calendar.getInstance();
-            alarmTime.set(Calendar.HOUR_OF_DAY, 12);
-            alarmTime.set(Calendar.MINUTE, 42);
-            alarmTime.set(Calendar.SECOND, 0);
-
-            Timer timer = new Timer();
-
-            // Schedule the alarm to run every day at the specified time
-            timer.scheduleAtFixedRate(new AlarmTask(), calculateDelay(alarmTime.getTime()), 24 * 60 * 60 * 1000);
-
+            timer.cancel();
         }
-
     }
 
     private static long calculateDelay(Date alarmTime) {
