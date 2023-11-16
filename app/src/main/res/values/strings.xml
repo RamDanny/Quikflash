@@ -49,4 +49,5 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="cap3">Delete</string>
+    <string name="title_activity_delete_deck">DeleteDeck</string>
 </resources>
