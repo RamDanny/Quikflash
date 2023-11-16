@@ -41,7 +41,7 @@ public class StudyActivity extends AppCompatActivity {
             button.setText(name);
             button.setTextSize(28);
             button.setTextColor(Color.BLACK);
-            button.setBackgroundColor(ContextCompat.getColor(this, com.google.android.material.R.color.cardview_light_background));
+            button.setBackgroundColor(Color.rgb(32,152,174)) ;
             //setContentView(button, params);
 
             /*TextView textView = new TextView(this);

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Wrong"
-        android:textColor="#E91E63"
+        android:textColor="#75052B"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:text="Correct"
-        android:textColor="#4CAF50"
+        android:textColor="#416343"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/correctCount"
