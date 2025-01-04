@@ -1,7 +1,9 @@
 # Quikflash
 
---- 
+Flashcards app inspired by Anki.
 
-A Anki clone made for our Mobile Application lab.
-
-Implemented DBMS, Notification, alarm in the app which retaining the main purpose of ANKI 
++ Persistence implemented using databases
++ Notifications that can be set
++ Alarm with customized times to facilitate convenience
++ Ability to create, modify and delete decks
++ Also includes a quiz mode to randomly test from a chosen deck
